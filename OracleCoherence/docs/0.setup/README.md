@@ -17,7 +17,7 @@ The examples in the `/docs` section show different aspects of Oracle Coherence f
     
 4. Create a second machine to run Coherence containers:
     
-    ```
+```
     docker-machine create -d virtualbox \
     --engine-opt="cluster-store=consul://$(docker-machine ip coh-keystore):8500" \
     --engine-opt="cluster-advertise=eth1:2376" \
@@ -39,7 +39,7 @@ The examples in the `/docs` section show different aspects of Oracle Coherence f
     
 6. Create an overlay network to use in the overlay examples. This command only needs to be executed for one of the cluster machines so the `$(docker-machine config coh-demo0)` argument is used to target the command to the `coh-demo0` machine: 
     
-    ```
+```
     $ docker $(docker-machine config coh-demo0) network create \
     --driver overlay coh-net
 ```
