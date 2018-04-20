@@ -18,33 +18,33 @@ The examples in the `/docs` section show different aspects of Oracle Coherence f
 4. Create a second machine to run Coherence containers:
     
 ```
-    docker-machine create -d virtualbox \
-    --engine-opt="cluster-store=consul://$(docker-machine ip coh-keystore):8500" \
-    --engine-opt="cluster-advertise=eth1:2376" \
-    coh-demo0
+docker-machine create -d virtualbox \
+--engine-opt="cluster-store=consul://$(docker-machine ip coh-keystore):8500" \
+--engine-opt="cluster-advertise=eth1:2376" \
+coh-demo0
 ```
 
     This creates a Docker Machine VM called `coh-demo0` that is configured to use the Consul keystore created above.
     
 5. Create a third machine to run Coherence containers:
 
-    ```
-    docker-machine create -d virtualbox \
-    --engine-opt="cluster-store=consul://$(docker-machine ip coh-keystore):8500" \
-    --engine-opt="cluster-advertise=eth1:2376" \
-    coh-demo1
-    ```
+```
+docker-machine create -d virtualbox \
+--engine-opt="cluster-store=consul://$(docker-machine ip coh-keystore):8500" \
+--engine-opt="cluster-advertise=eth1:2376" \
+coh-demo1
+```
 
-    This creates a Docker Machine VM called `coh-demo1` that is configured to use the Consul keystore created above.
+This creates a Docker Machine VM called `coh-demo1` that is configured to use the Consul keystore created above.
     
 6. Create an overlay network to use in the overlay examples. This command only needs to be executed for one of the cluster machines so the `$(docker-machine config coh-demo0)` argument is used to target the command to the `coh-demo0` machine: 
     
 ```
-    $ docker $(docker-machine config coh-demo0) network create \
+    $ docker $(docker-machine config coh-demo0) network create \
     --driver overlay coh-net
 ```
 
-    This creates an overlay network called `coh-net` available to both the `coh-demo0` and `coh-demo1` machines.
+This creates an overlay network called `coh-net` available to both the `coh-demo0` and `coh-demo1` machines.
     
 7. Build the Java 8 image. Change directory to the `OracleJava/java-8` directory, make sure the required JRE install (as documented in the [OracleJava](../../../OracleJava) section) has been downloaded to that directory, and then run these commands:
     
