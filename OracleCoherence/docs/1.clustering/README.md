@@ -1,9 +1,10 @@
-#Coherence Clustering on Docker
+# Coherence Clustering on Docker
 
 Coherence is a distributed caching product which means that multiple Coherence storage enabled members run together to form a cluster. Typically, this cluster is spread across multiple machines for resiliency; so, when using Docker, a cluster would be run using multiple containers across multiple Docker hosts.
 
 
 ### 1. Clustering Using Host Networking
+
 The easiest way to make Coherence work inside Docker containers is to run the containers with the `--net=host` argument. This allows the containers to use their host's network interfaces rather than using virtualized networks. When using host networking everything in Coherence works as normal.
 
 1. Set up the Docker environment as described in the [Setup](../0.setup) section.
